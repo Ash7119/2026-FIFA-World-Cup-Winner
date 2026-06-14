@@ -9,5 +9,5 @@ A machine learning project to predict the winner of the upcoming FIFA World Cup
 
 ## Notes
 - Elo Ratings as of May 27th, 2026.
-- Squad values as of June 7th, 2026.
+- Squad values as of June 14th, 2026.
 - Results as of June 5th, 2026. 
