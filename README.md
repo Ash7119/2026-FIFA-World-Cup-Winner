@@ -31,16 +31,25 @@ Loaded the data and cleaned every dataset being used in the project.
 - For every historical match, attach the correct Elo rating for both teams **as of that match date** using a backward as-of join (`pd.merge_asof`). Stored as `home_elo`, `away_elo`, and `elo_diff`
 - Builds the following features for every historical match:
 - - **Rolling form** (last 5 games): Average goals scored, average goals conceded, win rate — computed with `shift(1)` to prevent leakage
-- **H2H history**: Cumulative win rate between the two specific teams in all prior meetings
-- **Elo features**: Home Elo, away Elo, Elo difference
-- **Context flags**: Neutral venue, World Cup match, qualifier match
-- **Shootout win rates**: Each team's historical penalty shootout win rate (Used in knockout simulation)
-- **Squad features**: Avg age, market value, % foreigners (Used in knockout simulation)
+- H2H history: Cumulative win rate between the two specific teams in all prior meetings
+- Elo features: Home Elo, away Elo, Elo difference
+- Context flags: Neutral venue, World Cup match, qualifier match
+- Shootout win rates: Each team's historical penalty shootout win rate (Used in knockout simulation)
+- Squad features: Avg age, market value, % foreigners (Used in knockout simulation)
 
-### Step 4-Training and Testing
+### Step 4-Training and Testing and Calibration Check
 - Train up to 2018
 - Val from 2018-Nove 2022
 - Test from 2022 FIFA WC onwards
+- Ran 2 xgb models with one of them targeting the match outcome from home team perspective and another one which targets the goals which were scored home/away
+- Plotted calibration curves for each outcome(W/D/L)
+
+### Step 5-Poisson Match Simulator
+- Simulates a single match by sampling goals from a Poisson distribution
+
+### Step 6-Monte Carlo and Result
+- Runs the 10,000 tournament simulations
+- the result outputted counts how often each team reaches each stage across all 10,000 simulations and expresses results as percentages 
 
 
 ## Notes
